@@ -1,0 +1,28 @@
+{% set name = "lsf-drmaa" %}
+{% set version = "1.11" %}
+{% set sha256 = "8ff8c17ee82f1bd00f83cc54a6ae66ca4822e937bc4f9c45494049c43ebde198" %}
+
+package:
+  name: {{ name }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://github.com/IBMSpectrumComputing/{{ name }}/archive/v{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script_env:
+    - LSF_ENVDIR
+    - LSF_LIBDIR
+
+requirements:
+  build:
+    - ragel
+
+about:
+  home: http://ibmspectrumcomputing.github.io/lsf-drmaa/
+  license: GPLv3+
+  license_file: COPYING
+  summary: DRMAA implementation for LSF 9.1
